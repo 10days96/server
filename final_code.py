@@ -111,7 +111,7 @@ def match_target_amplitude(sound, target_dBFS):
 
 
 def main(args):
-    audio, sample_rate = read_wave('user.wav')
+    audio, sample_rate = read_wave('user2.wav')
     vad = webrtcvad.Vad(3)
     frames = frame_generator(10, audio, sample_rate)
     frames = list(frames)

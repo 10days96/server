@@ -14,7 +14,8 @@ def simmx(A, B):
             max = r2
     else:
         print("잘못 된 파일 입니다.")
-        return -1;
+        M = np.zeros(1,0)
+        return M;
 
     A1 = np.power(A, 2)
     EA = np.sqrt(A1.sum(axis = 0)) # 행렬
@@ -109,7 +110,7 @@ def mfcc_def(y,s_r, x, x_r):
     mfcc2 = np.array(B,float)
     mfcc2 = mfcc2.T
     M = simmx(mfcc1,mfcc2)
-    if(M != -1):
+    if(M.size != 1):
         D_test,D1 = dp(1-M)
         res = 0
 
