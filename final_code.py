@@ -1,10 +1,10 @@
-﻿import collections
+import collections
 import contextlib
 import sys
 import wave
 
 import webrtcvad
-
+#import _webrtcvad
 import librosa
 import librosa.display
 import numpy as np
@@ -111,7 +111,7 @@ def match_target_amplitude(sound, target_dBFS):
 
 
 def main(args):
-    audio, sample_rate = read_wave('final_data/user.wav')
+    audio, sample_rate = read_wave('user.wav')
     vad = webrtcvad.Vad(3)
     frames = frame_generator(10, audio, sample_rate)
     frames = list(frames)
@@ -188,9 +188,11 @@ def main(args):
     print(fre_res)
 
     mfcc_res = mf.mfcc_def(good, sra, user, srb)
-
-    print("완전 결과")
-    print((zcr_res+fre_res+mfcc_res)/3)
+    if(mfcc_res != -1):
+        print("완전 결과")
+        print((zcr_res+fre_res+mfcc_res)/3)
+    else:
+        print("-1")
 
 
 if __name__ == '__main__':
