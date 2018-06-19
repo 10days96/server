@@ -7,13 +7,14 @@ def simmx(A, B):
     [r1,c1] = A.shape
     [r2,c2] = B.shape
 
-    if(r1 != r2):
+    if(r1 != r2 and r2 >= r1):
         if(r1 > r2):
             max = r1
         else:
             max = r2
     else:
-        max = r1
+        print("잘못 된 파일 입니다.")
+        return -1;
 
     A1 = np.power(A, 2)
     EA = np.sqrt(A1.sum(axis = 0)) # 행렬
@@ -108,14 +109,17 @@ def mfcc_def(y,s_r, x, x_r):
     mfcc2 = np.array(B,float)
     mfcc2 = mfcc2.T
     M = simmx(mfcc1,mfcc2)
-    D_test,D1 = dp(1-M)
-    res = 0
+    if(M != -1):
+        D_test,D1 = dp(1-M)
+        res = 0
 
-    if (D1[-1][-1] / D_test[-1][-1] == 0.0):
-        res = 100
-    else:
-        res = round((D_test[-1][-1] - D1[-1][-1]) / D_test[-1][-1] * 1000)
-        print("점수")
-    print(res)
+        if (D1[-1][-1] / D_test[-1][-1] == 0.0):
+            res = 100
+        else:
+            res = round((D_test[-1][-1] - D1[-1][-1]) / D_test[-1][-1] * 1000)
+            print("점수")
+        print(res)
 
-    return res
+        return res
+
+    return -1
