@@ -121,7 +121,7 @@ def main(args):
     segments = vad_collector(sample_rate, 10, 300, vad, frames)
     for i, segment in enumerate(segments):
        if i==2:
-            sys.stderr.write('-1')
+            sys.stderr.write('No blank please')
             sys.exit(1)
        path = '/var/www/html/upload/user_vad.wav'
 # print(' Writing %s' % (path,))

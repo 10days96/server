@@ -13,8 +13,8 @@ def simmx(A, B):
         else:
             max = r2
     else:
-        print("잘못 된 파일 입니다.")
-        M = np.zeros(1,0)
+# print("잘못 된 파일 입니다.")
+        M = np.zeros(1)
         return M;
 
     A1 = np.power(A, 2)
@@ -118,8 +118,8 @@ def mfcc_def(y,s_r, x, x_r):
             res = 100
         else:
             res = round((D_test[-1][-1] - D1[-1][-1]) / D_test[-1][-1] * 1000)
-            print("점수")
-        print(res)
+#    print("점수")
+#       print(res)
 
         return res
 
